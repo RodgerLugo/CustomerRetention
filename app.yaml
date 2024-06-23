@@ -2,9 +2,10 @@
 # a configuration file used by Google App Engine to define how your application behave
 
 
-runtime: python39  # or python38, depending on your setup
+runtime: python39
 
-entrypoint: python app.py
+
+entrypoint: gunicorn -b :$PORT app:app
 
 handlers:
 - url: /static
