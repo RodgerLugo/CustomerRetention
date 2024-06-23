@@ -1,0 +1,6 @@
+pandas
+google-cloud-bigquery
+scikit-learn
+joblib
+db-dtypes
+apache-airflow[gcp]

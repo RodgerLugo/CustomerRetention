@@ -1,0 +1,28 @@
+# docker-compose run --rm webserver airflow users create \
+#   --username admin \
+#   --firstname Admin \
+#   --lastname User \
+#   --role Admin \
+#   --email admin@example.com \
+#   --password admin123
+
+
+
+
+#   docker-compose run --rm webserver airflow users create --username admin --firstname Admin --lastname User --role Admin --email admin@example.com --password admin123
+
+
+
+
+
+# check
+
+
+# import pandas as pd
+
+# # Load the sales_pipeline.csv file to inspect the columns
+# sales_pipeline_df = pd.read_csv('C:/Users/elroy/Documents/CustomerRetention/data/sales_pipeline.csv')
+
+# # Display the first few rows and column names
+# print(sales_pipeline_df.head())
+# print(sales_pipeline_df.columns.tolist())

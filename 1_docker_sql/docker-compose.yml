@@ -1,0 +1,59 @@
+
+
+# multi-container application
+
+
+
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/credentials.json
+    volumes:
+      - C:/Users/elroy/Documents/CustomerRetention/1_docker_sql/credentials.json:/app/credentials.json
+    command: python /app/app.py
+
+ 
+ 
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    ports:
+      - "5432:5432"
+
+  webserver:
+    image: apache/airflow:2.0.2
+    depends_on:
+      - postgres
+    environment:
+      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - GOOGLE_APPLICATION_CREDENTIALS=/opt/airflow/credentials/credentials.json
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+      - C:/Users/elroy/Documents/CustomerRetention/1_docker_sql/credentials.json:/opt/airflow/credentials/credentials.json
+    command: webserver
+
+  scheduler:
+    image: apache/airflow:2.0.2
+    depends_on:
+      - postgres
+    environment:
+      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - GOOGLE_APPLICATION_CREDENTIALS=/opt/airflow/credentials/credentials.json
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+      - C:/Users/elroy/Documents/CustomerRetention/1_docker_sql/credentials.json:/opt/airflow/credentials/credentials.json
+    command: scheduler

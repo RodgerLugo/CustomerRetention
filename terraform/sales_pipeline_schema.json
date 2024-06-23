@@ -1,0 +1,54 @@
+[
+
+
+    {
+        "name": "opportunity_id",
+        "type": "STRING",
+        "mode": "REQUIRED"
+      },
+    
+      {
+        "name": "sales_agent",
+        "type": "STRING",
+        "mode": "NULLABLE"
+      },
+    
+      {
+        "name": "product",
+        "type": "STRING",
+        "mode": "NULLABLE"
+      },
+
+      {
+        "name": "account",
+        "type": "STRING",
+        "mode": "NULLABLE"
+      },
+    
+      {
+        "name": "deal_stage",
+        "type": "STRING",
+        "mode": "NULLABLE"
+      },
+    
+      {
+        "name": "engage_date",
+        "type": "TIMESTAMP",
+        "mode": "NULLABLE"
+      },
+
+      {
+        "name": "close_date",
+        "type": "TIMESTAMP",
+        "mode": "NULLABLE"
+      },
+
+
+      {
+        "name": "close_value",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+      }
+
+
+]
