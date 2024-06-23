@@ -1,0 +1,12 @@
+
+# Ignore log files
+*.log
+1_docker_sql/logs/
+
+# Ignore Python bytecode
+*.pyc
+__pycache__/
+
+# Ignore Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
