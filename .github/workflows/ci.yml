@@ -22,8 +22,8 @@ jobs:
       env:
         GCP_KEYFILE_BASE64: ${{ secrets.GCP_KEYFILE_BASE64 }}
       run: |
-        echo $GCP_KEYFILE_BASE64 | base64 --decode > $HOME/gcloud-service-key.json
-        gcloud auth activate-service-account --key-file=$HOME/gcloud-service-key.json
+        echo $GCP_KEYFILE_BASE64 | base64 --decode > $HOME/credentials.json
+        gcloud auth activate-service-account --key-file=$HOME/credentials.json
         gcloud config set project ${{ secrets.GCP_PROJECT }}
     - name: Run tests
       run: pytest
