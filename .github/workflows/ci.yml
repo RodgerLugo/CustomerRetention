@@ -5,6 +5,7 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python
@@ -16,13 +17,15 @@ jobs:
         python -m pip install --upgrade pip
         pip install pytest
         pip install -r requirements.txt
+    - name: Set environment variables
+      run: echo "DATA_DIR=data" >> $GITHUB_ENV
     - name: Run tests
       run: pytest
+    - name: Write GCP key to file
+      run: echo "${{ secrets.GCP_KEYFILE }}" > gcp-keyfile.json
+    - name: Authenticate to GCP
+      run: gcloud auth activate-service-account --key-file=gcp-keyfile.json
+    - name: Set GCP project
+      run: gcloud config set project ${{ secrets.GCP_PROJECT }}
     - name: Deploy to GCP
-      run: |
-        gcloud auth activate-service-account --key-file=$GCP_KEYFILE
-        gcloud config set project $GCP_PROJECT
-        gcloud app deploy
-      env:
-        GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
-        GCP_KEYFILE: ${{ secrets.GCP_KEYFILE }}
+      run: gcloud app deploy
