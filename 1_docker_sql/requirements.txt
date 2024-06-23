@@ -4,3 +4,6 @@ scikit-learn
 joblib
 db-dtypes
 apache-airflow[gcp]
+sklearn
+google-auth
+pytest
