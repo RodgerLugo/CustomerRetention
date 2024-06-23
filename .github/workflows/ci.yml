@@ -29,6 +29,6 @@ jobs:
       run: pytest
     - name: Deploy to GCP
       run: |
-        gcloud app deploy
+        gcloud app deploy --verbosity=debug
       env:
         GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
