@@ -22,7 +22,9 @@ jobs:
     - name: Run tests
       run: pytest
     - name: Write GCP key to file
-      run: echo "${{ secrets.GCP_KEYFILE }}" > gcp-keyfile.json
+      run: |
+        echo "${{ secrets.GCP_KEYFILE }}" > gcp-keyfile.json
+        cat gcp-keyfile.json  # Debugging line to print the content
     - name: Authenticate to GCP
       run: gcloud auth activate-service-account --key-file=gcp-keyfile.json
     - name: Set GCP project
