@@ -1,0 +1,16 @@
+# deploy your application to Google App Engine
+# a configuration file used by Google App Engine to define how your application behave
+
+
+runtime: python39  # or python38, depending on your setup
+
+entrypoint: python app.py
+
+handlers:
+- url: /static
+  static_dir: static
+- url: /.*
+  script: auto
+
+env_variables:
+  DATA_DIR: data
