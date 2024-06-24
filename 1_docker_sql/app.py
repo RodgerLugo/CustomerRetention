@@ -5,6 +5,13 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, roc_auc_score, classification_report
 import joblib
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return "Hello, this is your customer retention application."
 
 
 
@@ -121,4 +128,5 @@ if __name__ == "__main__":
     accounts, products, sales_pipeline, sales_teams = load_data()
     data = preprocess_data(accounts, products, sales_pipeline, sales_teams)
     train_model(data)
+    app.run(host='0.0.0.0', port=8080)
 

@@ -15,4 +15,5 @@ handlers:
 
 env_variables:
   DATA_DIR: data
+  entrypoint: python C:\Users\elroy\Documents\CustomerRetention\1_docker_sql\app.py
 
