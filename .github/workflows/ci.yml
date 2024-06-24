@@ -32,6 +32,3 @@ jobs:
         gcloud app deploy --verbosity=debug
       env:
         GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
-
-
-        #test
