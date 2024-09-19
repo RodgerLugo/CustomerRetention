@@ -43,6 +43,7 @@ This project centers on developing a data-driven solution to predict customer ch
 - Achieved a predictive accuracy of 94% using the Random Forest model, offering valuable insights for business decisions.
 - Real-time dashboards provide stakeholders with a comprehensive view of customer churn trends and key metrics.
 
+##
 
  **Access the Customer Retention Project**:
     - The dashboard link can be found [here](https://sites.google.com/view/rodgerlc-customer-retention/customer-retention-dashboard).
